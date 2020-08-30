@@ -1,9 +1,9 @@
-# Fabric Example Mod
+# Cursed Table
 
-## Setup
+Tired of having to deal with villagers only to get a mending book for 64 emeralds? This mod solves it! You can find any enchantment on the table now that wasn't available before... including curses
 
-For setup instructions please see the [fabric wiki page](https://fabricmc.net/wiki/tutorial:setup) that relates to the IDE that you are using.
+## Compiling
 
-## License
-
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+1. Clone the repository to your device.
+2. On a command prompt run `./gradlew build` to build the mod.
+3. The mod files will be located in the `build/libs/` folder
