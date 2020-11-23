@@ -9,18 +9,17 @@
     "ByMartrixx"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/ByMartrixx/all-enchantments-on-table",
-    "issues": "https://github.com/ByMartrixx/all-enchantments-on-table/issues"
+    "sources": "https://github.com/ByMartrixx/cursed-table",
+    "issues": "https://github.com/ByMartrixx/cursed-table/issues"
   },
 
   "license": "MIT",
   "icon": "assets/cursed_table/icon.png",
 
-  "environment": "server",
+  "environment": "*",
   "entrypoints": {
-    "server": [
-      "io.github.bymartrixx.cursed_table.CursedTable"
+    "main": [
+      "io.github.bymartrixx.cursed.table.CursedTable"
     ]
   },
   "mixins": [
@@ -29,10 +28,6 @@
 
   "depends": {
     "fabricloader": ">=0.7.4",
-    "fabric": "*",
     "minecraft": "1.16.x"
-  },
-  "suggests": {
-    "flamingo": "*"
   }
 }

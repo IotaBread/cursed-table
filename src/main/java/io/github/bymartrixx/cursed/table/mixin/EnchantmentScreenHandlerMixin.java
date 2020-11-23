@@ -1,4 +1,4 @@
-package io.github.bymartrixx.cursed_table.mixin;
+package io.github.bymartrixx.cursed.table.mixin;
 
 import java.util.List;
 import java.util.Random;
@@ -13,7 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.screen.EnchantmentScreenHandler;
 
 @Mixin(EnchantmentScreenHandler.class)
-public abstract class GenerateEnchantmentsMixin {
+public abstract class EnchantmentScreenHandlerMixin {
     @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/enchantment/EnchantmentHelper;generateEnchantments(Ljava/util/Random;Lnet/minecraft/item/ItemStack;IZ)Ljava/util/List;"), method = "generateEnchantments")
     private List<EnchantmentLevelEntry> genEnchantment(Random random, ItemStack item, int lvl, boolean treasures) {
         return EnchantmentHelper.generateEnchantments(random, item, lvl, true);
