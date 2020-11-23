@@ -87,9 +87,6 @@ publishing {
 			artifact(remapJar) {
 				builtBy remapJar
 			}
-			artifact("${project.buildDir.absolutePath}/libs/${archivesBaseName}-${project.version}.jar") {
-				builtBy remapJar
-			}
 			artifact(sourcesJar) {
 				builtBy remapSourcesJar
 			}
