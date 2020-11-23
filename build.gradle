@@ -1,6 +1,7 @@
 plugins {
 	id 'fabric-loom' version '0.4-SNAPSHOT'
 	id 'maven-publish'
+	id 'com.jfrog.bintray' version '1.8.5'
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_8
@@ -55,6 +56,29 @@ jar {
 	from "LICENSE"
 }
 
+bintray {
+	user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
+	key = project.hasProperty('bintrayApiKey') ? project.property('bintrayApiKey') : System.getenv('BINTRAY_KEY')
+	publications = ["mavenJava"]
+	publish = true
+	pkg {
+		repo = 'maven'
+		name = 'cursed-table'
+		licenses = ['MIT']
+		vcsUrl = 'https://github.com/ByMartrixx/cursed-table'
+		version {
+			released = new Date()
+			githubRepo = 'ByMartrixx/wdmcf'
+			websiteUrl = 'https://www.curseforge.com/minecraft/mc-mods/cursed-table'
+			issueTrackerUrl = 'https://github.com/ByMartrixx/cursed-table/issues'
+			vcsUrl = 'https://github.com/ByMartrixx/cursed-table'
+			gpg {
+				sign = true
+			}
+		}
+	}
+}
+
 // configure the maven publication
 publishing {
 	publications {
@@ -63,8 +87,19 @@ publishing {
 			artifact(remapJar) {
 				builtBy remapJar
 			}
+			artifact("${project.buildDir.absolutePath}/libs/${archivesBaseName}-${project.version}.jar") {
+				builtBy remapJar
+			}
 			artifact(sourcesJar) {
 				builtBy remapSourcesJar
+			}
+			pom.withXml {
+				def root = asNode()
+				root.appendNode('description', 'Tired of having to deal with villagers only to get a mending book for 64 emeralds? This mod solves it! You can find any enchantment on the table now that wasn\'t available before, including curses...')
+				root.appendNode('name', 'Cursed Table')
+				root.appendNode('url', 'https://www.curseforge.com/minecraft/mc-mods/cursed-table')
+				groupId("${project.maven_group}")
+				artifactId 'cursed-table'
 			}
 		}
 	}
